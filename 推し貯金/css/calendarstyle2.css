@@ -259,6 +259,7 @@ section:first-of-type p {
 
 .days-matome {
     display: flex;
+    flex-wrap: wrap;
     width: 700px;
     padding: 20px 45px;
 }
