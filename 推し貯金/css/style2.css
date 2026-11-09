@@ -554,4 +554,5 @@ today画面
     #otherMemo {
         height: 150px;
     }
+    #memo-area {width: 100%;}
 }
