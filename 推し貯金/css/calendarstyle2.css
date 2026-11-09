@@ -253,6 +253,7 @@ section:first-of-type p {
 
 .days-exp {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -329,4 +330,5 @@ section:first-of-type p {
     height: 15px;
     margin: 3px 1px 0 0;
 }
+    .days-memo {width: 100%;}
 }
