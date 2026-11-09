@@ -193,8 +193,8 @@ section:first-of-type p {
 
 .calendar-icon {
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     margin: 4px 3px 0 0;
     object-fit: contain;
     vertical-align: middle;
@@ -203,8 +203,8 @@ section:first-of-type p {
 /* メモがある日のアイコン */
 .calendar-memo-icon {
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     object-fit: contain;
     margin: 4px 3px 0 0;
     vertical-align: middle;
