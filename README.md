@@ -6,6 +6,6 @@
     <meta charset="UTF=8">
     </head>
   <body>
-    <a href="today.html">ヒラ貯金表へ</a>
+    <a href="../today.html">ヒラ貯金表へ</a>
   </body>
 </html>
