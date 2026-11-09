@@ -1,3 +1,11 @@
 # oshikatu
 推し活に利用するもの。
-<a>today.html</a>
+<DOCUTYPE html>
+  <html lang="ja">
+    <head>
+    <meta charset="UTF=8">
+    </head>
+  <body>
+    <a>today.html</a>
+  </body>
+</html>
