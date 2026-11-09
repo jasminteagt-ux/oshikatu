@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カレンダー</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/calendarstyle2.css">
+</head>
+
+<body>
+    <p><a href="today.html">今日の貯金額の記入</a></p>
+    <!-- 月の合計 -->
+    <section class="monthTotal">
+        <h2>月の合計</h2>
+        <p><span id="monthly-total">0</span>円</p>
+    </section>
+    <div class="calendar">
+        <div class="calendar-header">
+            <button id="prev-month"><img src="img/shortback.png" alt=""></button>
+            <h1 id="current-month"></h1>
+            <button id="next-month"><img src="img/shortgo.png" alt=""></button>
+
+        </div>
+        <div class="week">
+            <div>日</div>
+            <div>月</div>
+            <div>火</div>
+            <div>水</div>
+            <div>木</div>
+            <div>金</div>
+            <div>土</div>
+        </div>
+        <div id="calendar-days">
+        </div>
+    </div>
+    <!-- 選択した日の明細 -->
+    <div class="days-exp">
+        <div class="days-matome">
+            <div class="days-sum">
+                <h2 id="selected-date">日付を選択してください</h2>
+                <h1>合計：<span id="selected-total">0</span>円</h1>
+            </div>
+            <div class="days-index">
+                <ul id="details"></ul>
+            </div>
+        </div>
+        <div class="days-memo">
+            <p>メモ</p>
+            <div id="selected-memo"></div>
+        </div>
+    </div>
+    <script src="js/calendar01.js"></script>
+</body>
+
+</html>

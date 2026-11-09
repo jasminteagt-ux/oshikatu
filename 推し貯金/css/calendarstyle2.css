@@ -1,0 +1,332 @@
+@charset "UTF-8";
+
+/* カレンダー画面 */
+body {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+body > p {
+    margin: 0 0 16px;
+}
+
+/* 月合計・選択日の詳細カード */
+section {
+    margin: 0 0 22px;
+    padding: 22px 26px;
+    background: var(--base, #ffffff);
+    border: 1px solid var(--line, #e2e8dd);
+    border-radius: 18px;
+    box-shadow: var(--shadow, 0 8px 24px rgba(65, 85, 55, 0.07));
+}
+
+.days-matome, .days-memo {
+    background: var(--base, #ffffff);
+    border: 1px solid var(--line, #e2e8dd);
+    border-radius: 18px;
+    box-shadow: var(--shadow, 0 8px 24px rgba(65, 85, 55, 0.07));
+}
+
+section, .days-sum h2 {
+    margin: 0 0 10px;
+    font-size: 1.15rem;
+}
+
+section p {
+    margin: 8px 0 0;
+}
+
+.monthTotal {
+    display: flex;
+    gap: 50px;
+}
+
+#monthly-total {
+    color: var(--accent-dark, #789b5d);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+section:first-of-type p {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* カレンダー本体 */
+.calendar {
+    margin: 0 0 22px;
+    padding: 20px;
+    background: #fbfcfa;
+    border: 1px solid var(--line, #e2e8dd);
+    border-radius: 20px;
+    box-shadow: var(--shadow, 0 8px 24px rgba(65, 85, 55, 0.07));
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin: 0 0 18px;
+}
+
+.calendar-header h1 {
+    min-width: 180px;
+    margin: 0;
+    font-size: 1.55rem;
+    text-align: center;
+    letter-spacing: 0.04em;
+}
+
+#prev-month, #next-month {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 130px;
+    height: 65px;
+    padding: 5px;
+    background: #ffffff;
+    border: 1px solid #e2eadd;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+#prev-month:hover, #next-month:hover {
+    background: #f3f8ef;
+    transform: scale(1.04);
+}
+
+#prev-month img, #next-month img {
+    display: block;
+    width: 120px;
+    height: 60px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.week,
+#calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.week {
+    margin-bottom: 7px;
+}
+
+.week > div {
+    padding: 9px 3px;
+    color: var(--text-sub, #7b8578);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.week > div:first-child {
+    color: #c17e78;
+}
+
+.week > div:last-child {
+    color: #7796b0;
+}
+
+#calendar-days {
+    gap: 6px;
+}
+
+#calendar-days > div {
+    position: relative;
+    min-width: 0;
+    min-height: 100px;
+    padding: 8px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e8ede3;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.18s ease, border-color 0.18s ease,
+                transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+#calendar-days > div:hover {
+    background: #f3f8ef;
+    border-color: var(--accent, #b0d98d);
+    box-shadow: 0 4px 12px rgba(85, 115, 65, 0.08);
+    transform: translateY(-1px);
+}
+
+/* 日付：小さな丸い数字で表示 */
+#calendar-days > div > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 29px;
+    height: 29px;
+    margin-bottom: 9px;
+    color: #596653;
+    background: #f0f3ed;
+    border-radius: 50%;
+    font-size: 0.88rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 金額：日付より大きく、太字で強調 */
+#calendar-days > div > div:nth-child(2) {
+    display: inline-block;
+    max-width: 100%;
+    padding: 4px 7px;
+    color: #52783d;
+    background: #edf5e7;
+    border-radius: 7px;
+    font-size: clamp(0.78rem, 1.15vw, 0.95rem);
+    font-weight: 800;
+    line-height: 1.35;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+}
+
+.calendar-icon {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 4px 3px 0 0;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+/* メモがある日のアイコン */
+.calendar-memo-icon {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    margin: 4px 3px 0 0;
+    vertical-align: middle;
+}
+
+/* 詳細欄 */
+#selected-date {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+#selected-date button {
+    padding: 6px 15px;
+    color: #607b4c;
+    background: var(--accent-pale, #edf5e7);
+    border-color: #dce9d1;
+    font-size: 0.82rem;
+}
+
+#details {
+    padding-left: 22px;
+}
+
+#details li {
+    padding: 7px 0;
+    border-bottom: 1px solid #edf0e9;
+}
+
+#selected-total {
+    color: var(--accent-dark, #789b5d);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+#selected-memo {
+    min-height: 44px;
+    padding: 12px 14px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: #fbfcfa;
+    border: 1px solid #edf0e9;
+    border-radius: 12px;
+}
+
+.days-exp {
+    display: flex;
+    gap: 10px;
+}
+
+.days-matome {
+    display: flex;
+    width: 700px;
+    padding: 20px 45px;
+}
+
+.days-sum {
+    width: 250px;
+    margin: 0 15px 0 0;
+}
+
+.days-memo {
+    padding: 15px;
+    width: 410px;
+}
+
+.days-memo p {font-weight: bold;}
+
+/* 小さな画面 */
+@media (max-width: 650px) {
+    body {
+        padding: 10px;
+    }
+    section {
+        padding: 16px;
+    }
+    .calendar {
+        padding: 10px;
+    }
+    .calendar-header {
+        gap: 10px;
+    }
+    .calendar-header h1 {
+        min-width: 0;
+        font-size: 1.2rem;
+    }
+    #prev-month, #next-month {
+        width: 90px;
+        height: 45px;
+        padding: 4px;
+    }
+    #prev-month img, #next-month img {
+        width: 80px;
+        height: 40px;
+    }
+    #calendar-days {
+        gap: 3px;
+    }
+    #calendar-days > div {
+        min-height: 76px;
+        padding: 4px;
+        border-radius: 8px;
+    }
+    #calendar-days > div > div:first-child {
+        width: 23px;
+        height: 23px;
+        margin-bottom: 6px;
+        font-size: 0.72rem;
+    }
+    #calendar-days > div > div:nth-child(2) {
+        padding: 3px 4px;
+        font-size: 0.68rem;
+    }
+    .calendar-icon {
+        width: 15px;
+        height: 15px;
+        margin: 3px 1px 0 0;
+    }
+    .calendar-memo-icon {
+    width: 15px;
+    height: 15px;
+    margin: 3px 1px 0 0;
+}
+}

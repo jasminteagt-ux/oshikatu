@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貯金額の記入</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <script src="js/today02.js" defer></script>
+</head>
+
+<body>
+    <div class="body-style">
+        <p><a href="calendar.html">カレンダーへ</a></p>
+        <div class="date">
+            <button onclick="changeDate(-1);"><img src="img/longback.png" alt="戻る矢印" class="yazirushi"><span>前の日</span></button>
+            <h1 id="todayDate"></h1>
+            <p id="dateMode"></p>
+            <button onclick="changeDate(1);"><span>次の日</span><img src="img/longgo.png" alt="進む矢印" class="yazirushi"></button>
+        </div>
+        <div class="order-area">
+            <div class="order-table">
+                <table>
+                    <tr>
+                        <td>配信・動画・short</td>
+                        <td>：</td>
+                        <td>500円</td>
+                    </tr>
+                    <tr>
+                        <td>メン限</td>
+                        <td>：</td>
+                        <td>600円</td>
+                    </tr>
+                    <tr>
+                        <td>ストグラ2</td>
+                        <td>：</td>
+                        <td>600円</td>
+                    </tr>
+                    <tr>
+                        <td>眠れません配信</td>
+                        <td>：</td>
+                        <td>500円（枠ごとに+500円）</td>
+                    </tr>
+                    <tr>
+                        <td>コラボ配信・動画</td>
+                        <td>：</td>
+                        <td>1000円</td>
+                    </tr>
+                    <tr>
+                        <td>コラボ配信・動画（自枠なし）</td>
+                        <td>：</td>
+                        <td>2000円</td>
+                    </tr>
+                    <tr>
+                        <td>案件配信（mellow fun企画含む）</td>
+                        <td>：</td>
+                        <td>5000円</td>
+                    </tr>
+                    <tr>
+                        <td>新規グッズ販売（受注）開始</td>
+                        <td>：</td>
+                        <td>5000円</td>
+                    </tr>
+                    <tr>
+                        <td>リアイベ </td>
+                        <td>：</td>
+                        <td>10000円</td>
+                    </tr>
+                    <tr>
+                        <td>その他</td>
+                        <td>：</td>
+                        <td>金額記入（基本500円）</td>
+                    </tr>
+                </table>
+            </div>
+            <img src="img/mokuba_hira.gif" alt="ふたつの木馬　ヒラver." width="300px" height="300px">
+        </div>
+        <div class="button-area">
+            <div class="addMoney-area">
+                <details>
+                    <summary>配信・動画</summary>
+                    <div class="button-yoko">
+                        <button class="money-button" onclick="addMoney(500, '配信・動画・ショート');">
+                            <img src="img/doga.png" alt="" class="button-icon">
+                            <span>配信・動画・short</span>
+                        </button>
+                        <button class="money-button" onclick="addMoney(600, 'メン限');">
+                            <img src="img/mengen.png" alt="" class="button-icon">
+                            <span>メン限</span>
+                        </button>
+                        <button class="money-button" onclick="addMoney(600, 'ストグラ');">
+                            <img src="img/STGR2.png" alt="" class="button-icon">
+                            <span>ストグラ</span>
+                        </button>
+                        <button class="money-button" onclick="addNemurenai();">
+                            <img src="img/nemuranai.png" alt="" class="button-icon">
+                            <span>眠れません配信</span>
+                        </button>
+                    </div>
+                </details>
+                <details>
+                    <summary>コラボ</summary>
+                    <div class="button-yoko">
+                        <button class="money-button" onclick="addMoney(1000, 'コラボ');">
+                            <img src="img/collabo.png" alt="" class="button-icon">
+                            <span>コラボ</span>
+                        </button>
+                        <button class="money-button" onclick="addMoney(2000, 'コラボ（自枠なし）');">
+                            <img src="img/collabo2.png" alt="" class="button-icon">
+                            <span>コラボ（自枠なし）</span>
+                        </button>
+                    </div>
+                </details>
+                <details>
+                    <summary>特別なイベント</summary>
+                    <div class="button-yoko">
+                        <button class="money-button" onclick="addMoney(5000, '案件');">
+                            <img src="img/Anken.png" alt="" class="button-icon">
+                            <span>案件</span>
+                        </button>
+                        <button class="money-button" onclick="addMoney(5000, 'グッズ販売');">
+                            <img src="img/Goods.png" alt="" class="button-icon">
+                            <span>グッズ販売</span>
+                        </button>
+                        <button class="money-button" onclick="addMoney(10000, 'リアイベ');">
+                            <img src="img/riaibe.png" alt="" class="button-icon">
+                            <span>リアイベ</span>
+                        </button>
+                    </div>
+                </details>
+                <details>
+                    <summary>その他</summary>
+                    <div class="button-yoko">
+                        <textarea id="otherMemo" placeholder="その他の内容と金額（半角数字）を入力"></textarea>
+                        <div class="other-button">
+                            <input type="number" id="otherAmount" placeholder="金額" value="500"><span>円</span>
+                            <button class="money-button" onclick="addOtherMoney();">
+                                <img src="img/Other.png" alt="" class="button-icon"><span>その他</span>
+                        </div>
+                        </button>
+                    </div>
+                </details>
+                <button onclick="addMoney(0, '今日はなし');" id="nothing">今日はなし</button>
+            </div>
+            <div class="todayItems-area">
+                <div class="col-line">
+                    <h2>今日の明細</h2>
+                    <button onclick="resetToday();" class="nothing-button">今日の貯金をリセット</button>
+                </div>
+                <ul id="todayItems"></ul>
+                <div class="today-sum">合計金額 &nbsp; <div id="todayTotal">0円</div>
+                </div>
+            </div>
+        </div>
+        <div class="button-yoko">
+            <textarea name="memo" id="memo-area" placeholder="グッズ販売のURLなど"></textarea>
+            <button class="money-button" onclick="saveMemo();">
+                <img src="img/Memo.png" alt="" class="button-icon">
+                <span>メモを保存</span>
+            </button>
+        </div>
+        <p><a href="calendar.html">カレンダーへ</a></p>
+    </div>
+</body>
+
+</html>

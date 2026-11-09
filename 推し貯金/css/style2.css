@@ -1,0 +1,557 @@
+@charset "UTF-8";
+
+/* =========================
+共通デザイン
+white × soft gray × fresh green
+========================= */
+:root {
+    --base: #ffffff;
+    --main: #fbfcfa;
+    --accent: #b0d98d;
+    --accent-dark: #789b5d;
+    --accent-pale: #edf5e7;
+    --text: #465344;
+    --text-sub: #7b8578;
+    --line: #e2e8dd;
+    --shadow: 0 8px 24px rgba(65, 85, 55, 0.07);
+    --radius: 18px;
+}
+
+* {
+    box-sizing: border-box;
+    color: var(--text);
+}
+
+html {
+    min-width: 320px;
+    background: var(--base);
+}
+
+body {
+    margin: 0;
+    padding: 28px;
+    background: var(--base);
+    color: var(--text);
+    font-family: "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+    line-height: 1.65;
+}
+
+a {
+    color: var(--accent-dark);
+    font-weight: 600;
+    text-decoration: none;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--text);
+    text-decoration: underline;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    padding: 9px 16px;
+    color: var(--text);
+    background: var(--base);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease,
+        box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: var(--accent-pale);
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(85, 115, 65, 0.09);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(176, 217, 141, 0.55);
+    outline-offset: 2px;
+}
+
+input,
+textarea {
+    padding: 11px 13px;
+    color: var(--text);
+    background: var(--main);
+    border: 1px solid var(--line);
+    border-radius: 11px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #a0a99b;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* =========================
+画像の共通設定
+画像の縦横比を維持して変形を防ぐ
+========================= */
+.body-style img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 日付移動ボタンの矢印 */
+.yazirushi {
+    display: block;
+    width: 80px;
+    height: 40px;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+/* 貯金項目ボタン内のアイコン */
+.button-icon {
+    display: block;
+    width: 96px;
+    height: 58px;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+    flex: 0 0 auto;
+}
+
+/* オーダー票横の木馬画像 */
+.order-area>img {
+    display: block;
+    width: 300px;
+    height: 300px;
+    max-width: 32%;
+    object-fit: contain;
+    object-position: center;
+    flex: 0 1 300px;
+    margin-left: auto;
+}
+
+/* =========================
+today画面
+元の配置・左右構成を維持
+========================= */
+.body-style {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 22px 26px 28px;
+    background: var(--base);
+    border: 1px solid #edf0e9;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+
+.body-style>p {
+    margin: 0 0 12px;
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-height: 76px;
+    margin: 8px 0 20px;
+    padding: 10px 18px;
+    background: var(--accent-pale);
+    border: 1px solid #e1edd7;
+    border-radius: 16px;
+}
+
+.date h1 {
+    margin: 0;
+    font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+    letter-spacing: 0.04em;
+}
+
+.date p {
+    margin: 0;
+}
+
+.date button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-width: 112px;
+    padding: 7px 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border-color: #dce8d2;
+}
+
+.date button span {
+    font-size: 0.85rem;
+}
+
+.order-area {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 8px 0 22px;
+    padding: 18px 22px;
+    background: var(--main);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.order-table {
+    margin-right: 10px;
+    font-size: 0.94rem;
+}
+
+.order-table table {
+    border-collapse: collapse;
+}
+
+.order-table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #edf0e9;
+}
+
+.order-table tr:last-child td {
+    border-bottom: 0;
+}
+
+/* ボタンエリア：左右2カラム */
+.button-area {
+    display: flex;
+    align-items: stretch;
+    gap: 18px;
+}
+
+.addMoney-area,
+.todayItems-area {
+    min-width: 0;
+    height: 600px;
+    padding: 15px;
+    background: var(--base);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 16px rgba(65, 85, 55, 0.045);
+}
+
+.addMoney-area {
+    width: 570px;
+    overflow-y: auto;
+    scrollbar-color: var(--accent-dark) var(--base);
+
+}
+
+.todayItems-area {
+    width: 570px;
+    overflow-y: auto;
+}
+
+.addMoney-area details {
+    margin: 0 0 13px;
+    padding: 12px 14px 14px;
+    background: var(--main);
+    border: 1px solid #e9eee4;
+    border-radius: 14px;
+}
+
+.addMoney-area summary {
+    position: relative;
+    padding: 2px 4px 9px;
+    color: var(--accent-dark);
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.addMoney-area summary::-webkit-details-marker {
+    display: none;
+}
+
+.addMoney-area summary::after {
+    content: "+";
+    float: right;
+    color: var(--accent-dark);
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+.addMoney-area details[open] summary::after {
+    content: "−";
+}
+
+.button-yoko {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.money-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-width: 112px;
+    min-height: 104px;
+    padding: 9px 10px;
+    background: var(--base);
+    border: 1px solid #e4ebde;
+    border-radius: 14px;
+}
+
+.money-button:hover {
+    background: var(--accent-pale);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.money-button span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.nothing-button {
+    background: var(--main);
+    margin-top: 10px;
+    padding: 9px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+#nothing {
+    width: auto;
+    min-width: 180px;
+    min-height: 60px;
+    color: #607b4c;
+    background: var(--accent-pale);
+    border-color: #dce9d1;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#nothing:hover {
+    background: #e1efda;
+    border-color: var(--accent);
+}
+
+.col-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+}
+
+.col-line h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.col-line .nothing-button {
+    margin: 0;
+    padding: 7px 11px;
+    font-size: 0.78rem;
+}
+
+#todayItems {
+    padding-left: 24px;
+    font-size: 0.98rem;
+}
+
+#todayItems li {
+    padding: 8px 0;
+    border-bottom: 1px solid #edf0e9;
+}
+
+#todayItems li button {
+    margin-left: 10px;
+    padding: 3px 9px;
+    color: #8a756e;
+    background: #fffaf8;
+    border-color: #f0e5df;
+    font-size: 0.76rem;
+}
+
+.today-sum {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 12px 4px 8px;
+    color: var(--text);
+    border-bottom: 2px solid var(--accent);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+#todayTotal {
+    color: var(--accent-dark);
+    font-size: 1.65rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+/* その他の入力欄・メモ */
+#otherMemo {
+    height: 190px;
+    width: 300px;
+}
+
+#memo-area {
+    width: min(443px, 100%);
+    min-height: 100px;
+}
+
+#otherAmount {
+    width: 90px;
+    height: 42px;
+    margin-bottom: 5px;
+}
+
+.other-button {
+    display: inline-block;
+    /* flex-wrap: wrap;
+    align-items: center; */
+    gap: 5px;
+}
+
+/* ページ下部のメモ保存欄 */
+.body-style>.button-yoko:last-of-type {
+    align-items: stretch;
+    margin: 18px 0 10px;
+}
+
+.body-style>.button-yoko:last-of-type {
+    min-width: 120px;
+    min-height: 100px;
+}
+
+/* =========================
+レスポンシブ
+========================= */
+@media (max-width: 1050px) {
+    body {
+        padding: 14px;
+    }
+
+    .button-area {
+        flex-wrap: wrap;
+    }
+
+    .addMoney-area,
+    .todayItems-area {
+        width: 100%;
+        height: auto;
+        min-height: 360px;
+    }
+
+    .order-area>img {
+        max-width: 30%;
+    }
+}
+
+@media (max-width: 650px) {
+    body {
+        padding: 8px;
+    }
+
+    .body-style {
+        padding: 13px;
+        border-radius: 17px;
+    }
+
+    .date {
+        gap: 8px;
+        padding: 9px 6px;
+    }
+
+    .date button {
+        min-width: 0;
+        padding: 6px 8px;
+    }
+
+    .yazirushi {
+        width: 50px;
+        height: 25px;
+    }
+
+    .date h1 {
+        font-size: 1.05rem;
+        text-align: center;
+    }
+
+    .order-area {
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .order-table {
+        font-size: 0.72rem;
+    }
+
+    .order-table td {
+        padding: 3px;
+    }
+
+    .order-area>img {
+        width: 150px;
+        height: 150px;
+        max-width: 34%;
+    }
+
+    .addMoney-area,
+    .todayItems-area {
+        padding: 12px;
+    }
+
+    .button-yoko {
+        gap: 7px;
+    }
+
+    .money-button {
+        min-width: 80px;
+        min-height: 45px;
+        flex: 1 1 95px;
+    }
+
+    .button-icon,
+    #nothing {
+        width: 60px;
+        height: 45px;
+    }
+
+    .col-line {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .today-sum {
+        font-size: 1rem;
+    }
+
+    #todayTotal {
+        font-size: 1.4rem;
+    }
+
+    #otherMemo {
+        height: 150px;
+    }
+}
