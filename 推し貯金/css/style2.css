@@ -248,14 +248,14 @@ today画面
 }
 
 .addMoney-area {
-    width: 400px;
+    width: 570px;
     overflow-y: auto;
     scrollbar-color: var(--accent-dark) var(--base);
 
 }
 
 .todayItems-area {
-    width: 400px;
+    width: 570px;
     overflow-y: auto;
 }
 
